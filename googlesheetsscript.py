@@ -15,7 +15,7 @@ creds = service_account.Credentials.from_service_account_file(
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
 # Set up Google Sheets API client
-sheet_id = '1dNEaKV-teGvfsnebGzdR0PcJK4cyMgwO4KQCNNpExXk'
+sheet_id = '1S23XuWeO-dSFv-0Er-zCOqd5yfPLg082cW622eZtG1Y'
 sheet_range = 'Sheet1!A:B'
 service = build('sheets', 'v4', credentials=creds)
 sheet = service.spreadsheets()
