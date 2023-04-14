@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 
 # Set up Google Sheets API credentials
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'creds.json'
+SERVICE_ACCOUNT_FILE = 'cred.json'
 creds = None
 creds = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -15,7 +15,7 @@ creds = service_account.Credentials.from_service_account_file(
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
 # Set up Google Sheets API client
-sheet_id = 'AIzaSyBNwPTSXkSVZDdHmwE_QHSTJg7sqXU53Mk'
+sheet_id = '1dNEaKV-teGvfsnebGzdR0PcJK4cyMgwO4KQCNNpExXk'
 sheet_range = 'Sheet1!A:B'
 service = build('sheets', 'v4', credentials=creds)
 sheet = service.spreadsheets()
