@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 
 # Set up Google Sheets API credentials
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'cred.json'
+SERVICE_ACCOUNT_FILE = 'creds.json'
 creds = None
 creds = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)
