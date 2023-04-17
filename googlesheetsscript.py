@@ -22,20 +22,29 @@ sheet = service.spreadsheets()
 
 # Loop to read data from sensor and write it to the sheet
 while True:
-    # Read data from sensor
-    data = ser.readline().decode().strip().split(',')
+    try:
+        # Read data from sensor
+        data = ser.readline().decode().strip().split(',')
 
-    # Format data for Google Sheets API
-    values = [
-        [datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')] + data
-    ]
+        # Format data for Google Sheets API
+        values = [
+            [datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')] + data
+        ]
 
-    # Write data to sheet
-    request_body = {
-        'values': values
-    }
-    sheet.values().append(spreadsheetId=sheet_id, range=sheet_range,
-                           valueInputOption='USER_ENTERED', body=request_body).execute()
+        # Write data to sheet
+        request_body = {
+            'values': values
+        }
+        sheet.values().append(spreadsheetId=sheet_id, range=sheet_range,
+                               valueInputOption='USER_ENTERED', body=request_body).execute()
+
+        # Print debug information
+        print(f"Data: {data}")
+        print(f"Values: {values}")
+        print("Data written to sheet.")
+
+    except Exception as e:
+        print(f"Error: {e}")
 
     # Wait for some time before reading again
     time.sleep(5)
