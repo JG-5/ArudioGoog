@@ -19,7 +19,7 @@ sheet_id = '1S23XuWeO-dSFv-0Er-zCOqd5yfPLg082cW622eZtG1Y'
 sheet_range = 'Sheet1!A:B'
 service = build('sheets', 'v4', credentials=creds)
 sheet = service.spreadsheets()
-
+print("connected")
 # Loop to read data from sensor and write it to the sheet
 while True:
     # Read data from sensor
@@ -29,13 +29,12 @@ while True:
     values = [
         [datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')] + data
     ]
-
+    print("values",values)
     # Write data to sheet
     request_body = {
         'values': values
     }
     sheet.values().append(spreadsheetId=sheet_id, range=sheet_range,
                            valueInputOption='USER_ENTERED', body=request_body).execute()
-
     # Wait for some time before reading again
     time.sleep(5)
